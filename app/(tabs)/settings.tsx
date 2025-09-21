@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-export class About extends Component {
+export class Settings extends Component {
   render() {
     return (
       <View>
-        <Text> About Screen </Text>
+        <Text> Settings </Text>
       </View>
     )
   }
 }
 
-export default About
+export default Settings

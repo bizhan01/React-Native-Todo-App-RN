@@ -8,7 +8,6 @@ export default function Index() {
     >
       <Text style={styles.content}>Edit app/index.tsx to edit this screen.</Text>
       <Text>Hi</Text>
-      <Link href={"/about"}>Visit About Screen</Link>
     </View>
   );
 }
