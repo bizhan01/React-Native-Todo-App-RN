@@ -1,14 +1,44 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { ScrollView, Text, View } from "react-native";
+import React, { useState } from 'react'
+import  useTheme  from '@/hooks/useTheme';
+import { createSettingsStyles } from '@/assets/styles/settings.styles';
+import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
+import ProgressStats from '@/components/ProgressStats';
 
-export class Settings extends Component {
-  render() {
-    return (
-      <View>
-        <Text> Settings </Text>
-      </View>
-    )
-  }
-}
+const settings = () => {
+  const [isAutoSync, setIsAutoSync] = useState(true);
+  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true);
 
-export default Settings
+  const {colors, isDarkMode, toggleDarkMode} = useTheme()
+
+  const settingsStyles = createSettingsStyles(colors)
+
+
+  return (
+    <LinearGradient colors={colors.gradients.background} style={settingsStyles.container}>
+      <SafeAreaView style={settingsStyles.safeArea}>
+        {/* HEADER */}
+        <View style={settingsStyles.header}>
+          <View style={settingsStyles.titleContainer}>
+            <LinearGradient colors={colors.gradients.primary} style={settingsStyles.iconContainer}>
+              <Ionicons name="settings" size={28} color="#ffffff" />
+            </LinearGradient>
+            <Text style={settingsStyles.title}>Settings</Text>
+          </View>
+        </View>
+
+        <ScrollView
+          style={settingsStyles.scrollView}
+          contentContainerStyle={settingsStyles.content}
+          showsVerticalScrollIndicator={false}
+        />
+        <ProgressStats />
+
+      </SafeAreaView>
+    </LinearGradient>
+  );
+};
+
+export default settings
